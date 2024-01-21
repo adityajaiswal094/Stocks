@@ -1,18 +1,17 @@
 const addFav = require("../db/addFav");
-const pool = require("../db/config");
 
 const addFavourite = (app) => {
   app.post("/stocks/favourite/:id", async (req, res) => {
     try {
-      const sc_code = req.params.id || "";
+      const id = req.params.id || "";
 
-      if (sc_code.length === 0) {
+      if (id.length === 0) {
         res
           .status(400)
           .json({ title: "Bad Request", message: "Parameter cannot be empty" });
       }
 
-      const result = await addFav(sc_code);
+      const result = await addFav(id);
 
       if (result.status === 500) {
         res.status(500).json({

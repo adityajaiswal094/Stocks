@@ -1,4 +1,4 @@
-const { Pool } = require("pg");
+const { Pool, Client } = require("pg");
 
 const pool = new Pool({
   user: "postgres",
@@ -11,4 +11,12 @@ const pool = new Pool({
   connectionTimeoutMillis: 2000,
 });
 
-module.exports = pool;
+const client = new Client({
+  user: "postgres",
+  host: "localhost",
+  database: "stocks",
+  port: 5432,
+  password: "",
+});
+
+module.exports = { pool, client };
