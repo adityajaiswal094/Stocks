@@ -1,4 +1,4 @@
-const addFav = require("../db/addFav");
+const addFav = require("../db/queries/addFav");
 
 const addFavourite = (app) => {
   app.post("/stocks/favourite/:id", async (req, res) => {

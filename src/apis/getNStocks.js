@@ -1,9 +1,9 @@
-const pool = require("../db/config");
+const pool = require("../db/dbConfig");
 
 const getTopTenStocks = (app) => {
   app.get("/top-stocks", async (req, res) => {
     try {
-      const query = "SELECT * FROM stocks ORDER BY CAST(high AS NUMERIC) DESC LIMIT 10";
+      const query = "SELECT * FROM all_stocks ORDER BY CAST(high AS NUMERIC) DESC LIMIT 10";
       const result = await pool.query(query);
 
       res.status(200).json(result.rows);

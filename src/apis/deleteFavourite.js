@@ -1,5 +1,4 @@
-const pool = require("../db/config");
-const deleteFav = require("../db/deleteFav");
+const deleteFav = require("../db/queries/deleteFav");
 
 const deleteFavourite = (app) => {
   app.delete("/stocks/favourite/:id", async (req, res) => {

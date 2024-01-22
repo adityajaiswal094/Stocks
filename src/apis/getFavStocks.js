@@ -1,4 +1,4 @@
-const pool = require("../db/config");
+const pool = require("../db/dbConfig");
 
 const getFavStocks = (app) => {
   app.get("/stocks/favourites", async (req, res) => {

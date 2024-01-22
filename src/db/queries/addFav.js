@@ -1,4 +1,4 @@
-const pool = require("../db/config");
+const pool = require("../dbConfig");
 
 const addFav = async (stock_id) => {
   try {

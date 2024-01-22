@@ -1,10 +1,10 @@
-const pool = require("../db/config");
+const pool = require("../db/dbConfig");
 
 const getStocksByName = (app) => {
   app.get("/stocks", async (req, res) => {
     try {
       const name = req.query.name;
-      const query = "SELECT * FROM stocks WHERE sc_name=$1";
+      const query = "SELECT * FROM all_stocks WHERE TRIM(TRAILING \' \' FROM sc_name) = $1";
 
       const response = await pool.query(query, [name]);
 
