@@ -1,8 +1,8 @@
 const pool = require("../dbConfig");
 
-const topNStocks = async (value) => {
+const favStocks = async () => {
   try {
-    const query = `SELECT * FROM all_stocks ORDER BY CAST(high AS NUMERIC) DESC LIMIT ${value}`;
+    const query = "SELECT * FROM favourite_stocks";
     const result = await pool.query(query);
 
     return result.rows;
@@ -11,4 +11,4 @@ const topNStocks = async (value) => {
   }
 };
 
-module.exports = topNStocks;
+module.exports = favStocks;

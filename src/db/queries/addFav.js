@@ -9,12 +9,15 @@ const addFav = async (stock_id) => {
     return response.rows[0];
   } catch (error) {
     const pattern = /Key \(stock_id\)=\([^)]*\) is not present in table/;
-    return {
-      status: 500,
-      message: pattern.test(error.detail)
+    const message = error.message;
+    console.log(message);
+    throw new Error(
+      pattern.test(error.detail)
         ? `Stock with stock_id = ${stock_id} doesn't exist in dataset!`
-        : "Something went wrong!",
-    };
+        : message.includes("invalid input syntax")
+        ? "Invalid Input Syntax"
+        : "Something went wrong!"
+    );
   }
 };
 

@@ -13,16 +13,8 @@ const addFavourite = (app) => {
 
       const result = await addFav(id);
 
-      if (result.status === 500) {
-        res.status(500).json({
-          title: "Internal Server Error",
-          message: result.message,
-        });
-      } else {
-        res.status(200).json(result);
-      }
+      res.status(200).json(result);
     } catch (error) {
-      console.error(error);
       res
         .status(500)
         .json({ title: "Internal Server Error", message: error.message });

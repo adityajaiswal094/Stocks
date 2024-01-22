@@ -1,12 +1,12 @@
 const pool = require("../db/dbConfig");
+const favStocks = require("../db/queries/favStocks");
 
 const getFavStocks = (app) => {
   app.get("/stocks/favourites", async (req, res) => {
     try {
-      const query = "SELECT * FROM favourite_stocks";
-      const result = await pool.query(query);
+      const response = await favStocks();
 
-      res.status(200).json(result.rows);
+      res.status(200).json(response);
     } catch (error) {
       console.error(error);
       res

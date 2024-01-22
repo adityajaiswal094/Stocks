@@ -3,17 +3,11 @@ const deleteFav = require("../db/queries/deleteFav");
 const deleteFavourite = (app) => {
   app.delete("/stocks/favourite/:id", async (req, res) => {
     try {
-      const id = req.params.id || 0;
+      const id = req.params.id;
 
-      if (id === 0) {
-        res
-          .status(400)
-          .json({ title: "Bad Request", message: "Parameter cannot be empty" });
-      }
+      const response = await deleteFav(id);
 
-      const result = await deleteFav(id);
-
-      res.status(200).json(result);
+      res.status(200).json(response);
     } catch (error) {
       console.error(error);
       res
