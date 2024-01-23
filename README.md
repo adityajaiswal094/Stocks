@@ -32,10 +32,10 @@ Express.js backend application that retrieves the BSE India Bhav Copy and employ
 
 Base Url: `http://localhost:8080`.
 
-1. `GET` route for the top 'N' stocks. By default, the value of 'N' is 10.
+1. `GET` route to get the top 10 stocks.
 
    - Endpoint: `/top-stocks`.
-   - Example: `http://localhost:8080/top-stocks` or `http://localhost:8080/top-stocks?value=15`.
+   - Example: `http://localhost:8080/top-stocks`.
 
 2. `GET` route to find stocks by name.
 

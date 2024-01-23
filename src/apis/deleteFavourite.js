@@ -1,3 +1,4 @@
+const redisClient = require("../config/redisConfig");
 const deleteFav = require("../db/queries/deleteFav");
 
 const deleteFavourite = (app) => {
@@ -7,10 +8,12 @@ const deleteFavourite = (app) => {
 
       const response = await deleteFav(id);
 
-      res.status(200).json(response);
+      await redisClient.expire("favourites", 0);
+
+      return res.status(200).json(response);
     } catch (error) {
       console.error(error);
-      res
+      return res
         .status(500)
         .json({ title: "Internal Server Error", message: error.message });
     }

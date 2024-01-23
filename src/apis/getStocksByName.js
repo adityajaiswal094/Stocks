@@ -8,10 +8,10 @@ const getStocksByName = (app) => {
 
       const response = await stocksByName(name);
 
-      res.status(200).json(response);
+      return res.status(200).json(response);
     } catch (error) {
       console.error(error);
-      res
+      return res
         .status(500)
         .json({ title: "Internal Server Error", message: error.message });
     }
