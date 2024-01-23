@@ -6,7 +6,7 @@ Express.js backend application that retrieves the BSE India Bhav Copy and employ
 
 ## Setting Up
 
-1. Download and install postgresql (v13.11) and pgAdmin4 (v7.4) in your system.
+1. Download and install postgresql (v13.11) and pgAdmin4 (v7.2) in your system.
 2. Download and install Git in your system.
 3. Open your psql terminal and create a DB in your postgres engine named **stocks**. Use postgres as your user.
 
@@ -23,18 +23,20 @@ Express.js backend application that retrieves the BSE India Bhav Copy and employ
 
 ## Getting Started
 
-1. Run the following command in root directory to run the migration which will create the necessary tables:
+1. Run the following command in root directory to run the schema migration:
 
    - `npx knex migrate:latest --env development`
 
 2. Open bash terminal and change directory to `./src/scripts/`.
-3. Run the following scripts in sequence in your bash terminal to perform the corresponding actions:
+3. Run the following scripts in your bash terminal to perform the corresponding actions:
 
    - `./downloadAndLoad.sh DDMMYY`: Downloads, unzips and loads the data in DB of the Bhav Copy for the specified date.
 
-     For example: `./downloadAndLoad.sh 22012024`.
+     For example: `./downloadAndLoad.sh 220124`.
 
    - `./lastFiftyDays.sh` (optional): Downloads, unzips and loads the data of the Bhav Copies for the last 50 days in the DB.
+
+     **Note**: Running this more than once will result in numerous duplicate data.
 
 4. Now, in your root directory, run the command `npm run dev` to start the server.
 5. Finally, use Postman to test the APIs.
@@ -55,7 +57,7 @@ Base Url: `http://localhost:8080`.
 
      Will return an array objects for the provided name for all the dates present in DB.
 
-3. `GET` route to get stock price history list for UI graph. Takes json object as body with keys name (array of names), from (date) and to (date) (from <= to).
+3. `GET` route to get stock price history list for UI graph. Takes json object as body with keys name (array of stock names), from (date YYYY-MM-DD) and to (date YYYY-MM-DD) (from <= to). If the date range **from** and **to** are not provided, it will return the price history for the given stocks for the last 10 days.
 
    - Endpoint: `/stocks/history`.
    - Example: `http://localhost:8080/stocks/history`.
@@ -64,7 +66,11 @@ Base Url: `http://localhost:8080`.
      "name": ["A.SARABHAI", "NUVOCO", "ARE&M", "BOM DYEING"],
      "from": "2024-01-19",
      "to": "2024-01-19"
-     }
+     }. This will return result for the given date range.
+
+     JSON object in body: {
+     "name": ["A.SARABHAI", "NUVOCO", "ARE&M", "BOM DYEING"],
+     }. This will return result for the last 10 days.
 
 4. `POST` route to add a stock to favourites.
 

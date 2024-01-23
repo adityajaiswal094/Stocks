@@ -4,7 +4,19 @@ const getStockPriceHistory = (app) => {
   app.get("/stocks/history", async (req, res) => {
     try {
       // from <= to
-      const { name, from, to } = req.body;
+      let { name = [], from, to } = req.body;
+
+      if (name.length === 0) {
+        return res
+          .status(400)
+          .json({ title: "Bad Request", message: "Missing Required Fields" });
+      }
+
+      if (from === undefined && to === undefined) {
+        to = new Date();
+        from = new Date();
+        from = new Date(from.setDate(from.getDate() - 10));
+      }
 
       if (new Date(from).getTime() > new Date(to).getTime()) {
         return res.status(422).json({
@@ -41,10 +53,9 @@ const getStockPriceHistory = (app) => {
         })
       );
 
-      res.status(200).json(formattedArray);
+      return res.status(200).json(formattedArray);
     } catch (error) {
-      console.error(error);
-      res
+      return res
         .status(500)
         .json({ title: "Internal Server Error", message: error.message });
     }
