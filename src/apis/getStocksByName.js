@@ -1,4 +1,4 @@
-const pool = require("../db/dbConfig");
+const redisClient = require("../config/redisConfig");
 const stocksByName = require("../db/queries/stocksByName");
 
 const getStocksByName = (app) => {
