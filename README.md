@@ -55,15 +55,21 @@ Base Url: `http://localhost:8080`.
 
      Will return an array objects for the provided name for all the dates present in DB.
 
-3. `GET` route to get stock price history list for UI graph.
+3. `GET` route to get stock price history list for UI graph. Takes json object as body with keys name (array of names), from (date) and to (date) (from <= to).
 
-   - Endpoint: ``.
-   - Example: ``.
+   - Endpoint: `/stocks/history`.
+   - Example: `http://localhost:8080/stocks/history`.
+
+     JSON object in body: {
+     "name": ["A.SARABHAI", "NUVOCO", "ARE&M", "BOM DYEING"],
+     "from": "2024-01-19",
+     "to": "2024-01-19"
+     }
 
 4. `POST` route to add a stock to favourites.
 
-   - Endpoint: `/stocks/favourite/:id`.
-   - Example: `http://localhost:8080/stocks/favourite/1000`.
+   - Endpoint: `/stocks/favourite/:sc_code`.
+   - Example: `http://localhost:8080/stocks/favourite/543334`.
 
 5. `GET` route to see favourite stocks.
 
@@ -71,8 +77,8 @@ Base Url: `http://localhost:8080`.
    - Example: `http://localhost:8080/stocks/favourites`.
 
 6. `DELETE` route to remove a stock from favourites.
-   - Endpoint: `/stocks/favourite/:id`.
-   - Example: `http://localhost:8080/stocks/favourite/1000`.
+   - Endpoint: `/stocks/favourite/:sc_code`.
+   - Example: `http://localhost:8080/stocks/favourite/543334`.
 
 ## Scripts
 

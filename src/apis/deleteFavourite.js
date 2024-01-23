@@ -8,7 +8,7 @@ const deleteFavourite = (app) => {
 
       const response = await deleteFav(sc_code);
 
-      await redisClient.expire("favourites", 0);
+      await redisClient.del("favourites");
 
       return res.status(200).json(response);
     } catch (error) {
