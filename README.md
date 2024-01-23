@@ -16,7 +16,7 @@ Express.js backend application that retrieves the BSE India Bhav Copy and employ
 
    - `\c stocks`
 
-   After this you will be connected to the `stocks` db.
+   After this you will be connected to the `stocks` DB.
 
 4. Clone this repo in your system and open in your IDE (eg: VSCode).
 5. Run `npm install` in your root directory to install all the necessary dependencies.
@@ -30,11 +30,11 @@ Express.js backend application that retrieves the BSE India Bhav Copy and employ
 2. Open bash terminal and change directory to `./src/scripts/`.
 3. Run the following scripts in sequence in your bash terminal to perform the corresponding actions:
 
-   - `./downloadAndLoad.sh DDMMYY`: Downloads, unzips and loads the data in db of the Bhav Copy for the specified date.
+   - `./downloadAndLoad.sh DDMMYY`: Downloads, unzips and loads the data in DB of the Bhav Copy for the specified date.
 
      For example: `./downloadAndLoad.sh 22012024`.
 
-   - `./lastFiftyDays.sh` (optional): Downloads, unzips and loads the data of the Bhav Copies for the last 50 days in the db.
+   - `./lastFiftyDays.sh` (optional): Downloads, unzips and loads the data of the Bhav Copies for the last 50 days in the DB.
 
 4. Now, in your root directory, run the command `npm run dev` to start the server.
 5. Finally, use Postman to test the APIs.
@@ -52,6 +52,8 @@ Base Url: `http://localhost:8080`.
 
    - Endpoint: `/stocks`.
    - Example: `http://localhost:8080/stocks?name=A.SARABHAI` or `http://localhost:8080/stocks?name=ARE%26M`. Here **%26** denotes '&'.
+
+     Will return an array objects for the provided name for all the dates present in DB.
 
 3. `GET` route to get stock price history list for UI graph.
 

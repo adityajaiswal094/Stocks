@@ -6,7 +6,22 @@ const getStocksByName = (app) => {
     try {
       const name = req.query.name;
 
+      const lowerCaseName = name.toLowerCase();
+      const cachedValue = await redisClient.get(
+        `stocksbyname:${lowerCaseName}`
+      );
+
+      if (cachedValue) {
+        return res.status(200).json(JSON.parse(cachedValue));
+      }
+
       const response = await stocksByName(name);
+
+      await redisClient.set(
+        `stocksbyname:${lowerCaseName}`,
+        JSON.stringify(response)
+      );
+      await redisClient.expire(`stocksbyname:${lowerCaseName}`, 86400);
 
       return res.status(200).json(response);
     } catch (error) {
