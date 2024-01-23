@@ -30,9 +30,11 @@ Express.js backend application that retrieves the BSE India Bhav Copy and employ
 2. Open bash terminal and change directory to `./src/scripts/`.
 3. Run the following scripts in sequence in your bash terminal to perform the corresponding actions:
 
-   - `./downloadAndUnzip.sh DDMMYY`: Downloads and unzips Bhav Copy for the specified date. For example: `./downloadAndUnzip.sh 22012024`. Any invalid date will download the latest Bhav Copy present on the BSE India website.
+   - `./downloadAndLoad.sh DDMMYY`: Downloads, unzips and loads the data in db of the Bhav Copy for the specified date.
 
-   - `./load.sh /path/to/file_name.csv`: Processes the csv file and copies all the necessary data into the table **all_stocks**. For example: `./load.sh ../data/EQ220124.CSV`.
+     For example: `./downloadAndLoad.sh 22012024`.
+
+   - `./lastFiftyDays.sh` (optional): Downloads, unzips and loads the data of the Bhav Copies for the last 50 days in the db.
 
 4. Now, in your root directory, run the command `npm run dev` to start the server.
 5. Finally, use Postman to test the APIs.
