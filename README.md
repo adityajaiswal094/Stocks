@@ -41,10 +41,10 @@ Express.js backend application that retrieves the BSE India Bhav Copy and employ
 
 Base Url: `http://localhost:8080`.
 
-1. `GET` route to get the top 10 stocks.
+1. `GET` route to get the top 10 stocks for a particular date.
 
-   - Endpoint: `/top-stocks`.
-   - Example: `http://localhost:8080/top-stocks`.
+   - Endpoint: `/top-stocks/YYYY-MM-DD`.
+   - Example: `http://localhost:8080/top-stocks/2024-01-01`.
 
 2. `GET` route to find stocks by name.
 
@@ -69,3 +69,20 @@ Base Url: `http://localhost:8080`.
 6. `DELETE` route to remove a stock from favourites.
    - Endpoint: `/stocks/favourite/:id`.
    - Example: `http://localhost:8080/stocks/favourite/1000`.
+
+## Scripts
+
+1. `./lastFiftyDays.sh`: Will download, unzip, process and load the data of the Bhav Copies for the last 50 days (if available). Will fail for those dates for which data are not present on the BSE India website.
+   Example: Just run the script as it is.
+
+2. `./downloadAndLoad.sh`: download, unzip, process and load the data of the Bhav Copy for the specified date (if available). Will fail for those dates for which data are not present on the BSE India website.
+   Example: `./downloadAndLoad.sh 200124` (Write the date in the format DDMMYY).
+
+## Migration commands
+
+1. `npx knex migrate:latest --env development`: To update the schema to the latest schema.
+
+2. `npx knex migrate:make <XXX_feature_name>`: To create a new migration schema file.
+   Convention followed: XXX should increase serially after the last file present in migrations directory.
+
+3. `npx knex migrate:rollback`: To rollback(undo) the current schema.
