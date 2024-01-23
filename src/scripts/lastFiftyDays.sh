@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Loop for the last 5 days
-for ((i = 0; i < 5; i++)); do
+for ((i = 0; i < 50; i++)); do
   # Calculate the date i days ago
   day_i=$(date -d "$i days ago" "+%d%m%y")
   
