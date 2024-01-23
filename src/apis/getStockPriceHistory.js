@@ -6,6 +6,13 @@ const getStockPriceHistory = (app) => {
       // from <= to
       const { name, from, to } = req.body;
 
+      if (new Date(from).getTime() > new Date(to).getTime()) {
+        return res.status(422).json({
+          title: "Unprocessable Entity",
+          message: "'from' should be less than or equal to 'to'",
+        });
+      }
+
       name.forEach((value, index, array) => {
         array[index] = value.toLowerCase();
       });
