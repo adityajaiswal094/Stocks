@@ -1,10 +1,10 @@
 const pool = require("../dbConfig");
 
-const addFav = async (stock_id) => {
+const addFav = async (sc_code) => {
   try {
     const insertQuery =
-      "INSERT INTO favourite_stocks (stock_id) VALUES($1) RETURNING *";
-    const response = await pool.query(insertQuery, [stock_id]);
+      "INSERT INTO favourite_stocks (sc_code) VALUES($1) RETURNING *";
+    const response = await pool.query(insertQuery, [sc_code]);
 
     return response.rows[0];
   } catch (error) {

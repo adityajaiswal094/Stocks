@@ -2,17 +2,11 @@ const redisClient = require("../config/redisConfig");
 const addFav = require("../db/queries/addFav");
 
 const addFavourite = (app) => {
-  app.post("/stocks/favourite/:id", async (req, res) => {
+  app.post("/stocks/favourite/:sc_code", async (req, res) => {
     try {
-      const id = req.params.id || "";
+      const sc_code = req.params.sc_code || "";
 
-      if (id.length === 0) {
-        return res
-          .status(400)
-          .json({ title: "Bad Request", message: "Parameter cannot be empty" });
-      }
-
-      const result = await addFav(id);
+      const result = await addFav(sc_code);
 
       await redisClient.expire("favourites", 0);
 

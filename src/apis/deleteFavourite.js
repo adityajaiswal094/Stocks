@@ -2,11 +2,11 @@ const redisClient = require("../config/redisConfig");
 const deleteFav = require("../db/queries/deleteFav");
 
 const deleteFavourite = (app) => {
-  app.delete("/stocks/favourite/:id", async (req, res) => {
+  app.delete("/stocks/favourite/:sc_code", async (req, res) => {
     try {
-      const id = req.params.id;
+      const sc_code = req.params.sc_code;
 
-      const response = await deleteFav(id);
+      const response = await deleteFav(sc_code);
 
       await redisClient.expire("favourites", 0);
 

@@ -1,10 +1,10 @@
 const pool = require("../dbConfig");
 
-const deleteFav = async (stock_id) => {
+const deleteFav = async (sc_code) => {
   try {
     const insertQuery =
-      "DELETE FROM favourite_stocks WHERE stock_id = $1 RETURNING *";
-    const result = await pool.query(insertQuery, [stock_id]);
+      "DELETE FROM favourite_stocks WHERE sc_code = $1 RETURNING *";
+    const result = await pool.query(insertQuery, [sc_code]);
 
     const deletedRecord = result.rows;
     if (deletedRecord.length === 0) {
