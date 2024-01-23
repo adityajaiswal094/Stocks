@@ -5,7 +5,6 @@ const getFavStocks = (app) => {
   app.get("/stocks/favourites", async (req, res) => {
     try {
       const cachedValue = await redisClient.get("favourites");
-      console.log("cachedValue: ", cachedValue);
 
       if (cachedValue !== null) {
         return res.status(200).json(JSON.parse(cachedValue));

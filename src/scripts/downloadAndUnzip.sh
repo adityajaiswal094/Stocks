@@ -13,6 +13,9 @@ user_date=$1
 # URL of the ZIP file
 url="https://www.bseindia.com/download/BhavCopy/Equity/EQ${user_date}_CSV.ZIP"
 
+# Create data dir
+mkdir ../data
+
 # Destination file path to save the ZIP file
 destination="../data/EQ${user_date}_CSV.ZIP"
 extraction="../data/"

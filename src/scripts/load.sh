@@ -13,7 +13,7 @@ inputCsvFile="$1"
 outputCsvFile="../data/data.csv"
 
 # Execute the cut command to extract specific columns
-cut -d ',' -f 1,2,5,6,7,8 "$inputCsvFile" > "$outputCsvFile"
+cut -d ',' -f 1,2,5,6,7,8 "../data/$inputCsvFile" > "$outputCsvFile"
 
 # Set the PostgreSQL COPY command with the appropriate file path
 pgCopyCommand="\COPY all_stocks(sc_code,sc_name,open,high,low,close) FROM '$outputCsvFile' WITH CSV HEADER"

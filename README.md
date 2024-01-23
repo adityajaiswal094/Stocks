@@ -9,6 +9,15 @@ Express.js backend application that retrieves the BSE India Bhav Copy and employ
 1. Download and install postgresql (v13.11) and pgAdmin4 (v7.4) in your system.
 2. Download and install Git in your system.
 3. Open your psql terminal and create a DB in your postgres engine named **stocks**. Use postgres as your user.
+
+   - `psql -U postgres -d postgres`
+
+   - `CREATE DATABASE stocks;`
+
+   - `\c stocks`
+
+   After this you will be connected to the `stocks` db.
+
 4. Clone this repo in your system and open in your IDE (eg: VSCode).
 5. Run `npm install` in your root directory to install all the necessary dependencies.
 
