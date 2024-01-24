@@ -6,9 +6,10 @@ Express.js backend application that retrieves the BSE India Bhav Copy and employ
 
 ## Setting Up
 
-1. Download and install postgresql (v13.11) and pgAdmin4 (v7.2) in your system.
-2. Download and install Git in your system.
-3. Open your psql terminal and create a DB in your postgres engine named **stocks**. Use postgres as your user.
+1. Download and install PostgreSQL (v13.11) and pgAdmin4 (v7.2) in your system.
+2. Download and install Redis.
+3. Download and install Git in your system.
+4. Open your psql terminal and create a DB in your postgres engine named **stocks**. Use postgres as your user.
 
    - `psql -U postgres -d postgres`
 
@@ -18,8 +19,8 @@ Express.js backend application that retrieves the BSE India Bhav Copy and employ
 
    After this you will be connected to the `stocks` DB.
 
-4. Clone this repo in your system and open in your IDE (eg: VSCode).
-5. Run `npm install` in your root directory to install all the necessary dependencies.
+5. Clone this repo in your system and open in your IDE (eg: VSCode).
+6. Run `npm install` in your root directory to install all the necessary dependencies.
 
 ## Getting Started
 
@@ -40,6 +41,10 @@ Express.js backend application that retrieves the BSE India Bhav Copy and employ
 
 4. Now, in your root directory, run the command `npm run dev` to start the server.
 5. Finally, use Postman to test the APIs.
+
+## Data Fetching Strategy
+
+First the API looks for data in the cache. When there will be a cache miss, it will fetch data from the DB.
 
 ## APIs
 
@@ -102,3 +107,29 @@ Base Url: `http://localhost:8080`.
    Convention followed: XXX should increase serially after the last file present in migrations directory.
 
 3. `npx knex migrate:rollback`: To rollback(undo) the current schema.
+
+## Sample Curls
+
+1. curl --location '<http://localhost:8080/top-stocks/2024-01-18>'
+
+2. curl --location '<http://localhost:8080/stocks?name=a.sarabhai>'
+
+3. curl --location --request GET '<http://localhost:8080/stocks/history>' \
+    --header 'Content-Type: application/json' \
+    --data '{
+   "name": ["A.SARABHAI", "NUVOCO", "ARE&M", "BOM DYEING"],
+   "from": "2024-01-19",
+   "to": "2024-01-23"
+   }'
+
+   curl --location --request GET '<http://localhost:8080/stocks/history>' \
+   --header 'Content-Type: application/json' \
+   --data '{
+   "name": ["A.SARABHAI", "NUVOCO", "ARE&M", "BOM DYEING"]
+   }'
+
+4. curl --location --request POST '<http://localhost:8080/stocks/favourite/543334>'
+
+5. curl --location '<http://localhost:8080/stocks/favourites>'
+
+6. curl --location --request DELETE '<http://localhost:8080/stocks/favourite/543334>'

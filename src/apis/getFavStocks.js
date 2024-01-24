@@ -13,7 +13,7 @@ const getFavStocks = (app) => {
       const response = await favStocks();
 
       await redisClient.set("favourites", JSON.stringify(response));
-      await redisClient.expire("favourites", 86400);
+      await redisClient.expire("favourites", 900);
 
       return res.status(200).json(response);
     } catch (error) {

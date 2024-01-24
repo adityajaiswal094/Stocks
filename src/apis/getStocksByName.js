@@ -21,7 +21,7 @@ const getStocksByName = (app) => {
         `stocksbyname:${lowerCaseName}`,
         JSON.stringify(response)
       );
-      await redisClient.expire(`stocksbyname:${lowerCaseName}`, 86400);
+      await redisClient.expire(`stocksbyname:${lowerCaseName}`, 900);
 
       return res.status(200).json(response);
     } catch (error) {

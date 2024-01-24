@@ -17,7 +17,7 @@ const getTopTenStocks = (app) => {
       const response = await topTenStocks(value, date);
 
       await redisClient.set(`topstocks:${date}`, JSON.stringify(response));
-      await redisClient.expire(`topstocks:${date}`, 86400);
+      await redisClient.expire(`topstocks:${date}`, 900);
 
       return res.status(200).json(response);
     } catch (error) {
