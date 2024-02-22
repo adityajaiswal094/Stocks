@@ -4,7 +4,7 @@
  */
 exports.up = function (knex) {
   return knex.schema.alterTable("favourite_stocks", (table) => {
-    table.string("user_id");
+    table.dropUnique("sc_code");
   });
 };
 
@@ -14,6 +14,6 @@ exports.up = function (knex) {
  */
 exports.down = function (knex) {
   return knex.schema.alterTable("favourite_stocks", (table) => {
-    table.dropColumn("user_id");
+    table.string("sc_code").unique().notNullable();
   });
 };
