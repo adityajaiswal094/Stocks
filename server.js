@@ -14,7 +14,12 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-const PORT = process.env.PORT ||  21222;
+const PORT = process.env.PORT || 21222;
+
+// test
+app.get("/", (req, res) => {
+  res.status(200).json({ title: "Testing", message: "Application Working" });
+});
 
 // apis
 getTopTenStocks(app);
