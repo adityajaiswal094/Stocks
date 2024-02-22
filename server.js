@@ -1,5 +1,8 @@
 const express = require("express");
 const cors = require("cors");
+const dotenv = require("dotenv");
+
+dotenv.config();
 
 const getTopTenStocks = require("./src/apis/getTopTenStocks");
 const getStocksByName = require("./src/apis/getStocksByName");
@@ -14,7 +17,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-const PORT = process.env.PORT || 21222;
+const PORT = process.env.PORT;
 
 // test
 app.get("/", (req, res) => {
