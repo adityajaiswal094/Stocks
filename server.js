@@ -14,7 +14,7 @@ const app = express();
 app.use(express.json());
 app.use(cors({origin: "*", methods:["GET", "POST", "PUT", "DELETE", "PATCH"]}));
 
-
+const hostname = "0.0.0.0";
 const PORT = process.env.PORT ||  21222;
 
 // apis
@@ -26,4 +26,4 @@ deleteFavourite(app);
 getStockPriceHistory(app);
 notFound(app);
 
-app.listen(PORT, "127.0.0.1", 511, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, hostname, () => console.log(`Server running on port ${PORT}`));
