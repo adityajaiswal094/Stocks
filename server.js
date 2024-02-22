@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(cors({origin: "*", methods:["GET", "POST", "PUT", "DELETE", "PATCH"]}));
 
 
-const PORT = /* process.env.PORT ||  */ 21222;
+const PORT = process.env.PORT ||  21222;
 
 // apis
 getTopTenStocks(app);
