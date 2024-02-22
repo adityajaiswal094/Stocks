@@ -4,7 +4,7 @@ const getStockPriceHistory = (app) => {
   app.get("/stocks/history", async (req, res) => {
     try {
       // from <= to
-      let { name = [], from, to } = req.body;
+      let { name = "", from, to } = req.body;
 
       if (name.length === 0) {
         return res
@@ -25,10 +25,7 @@ const getStockPriceHistory = (app) => {
         });
       }
 
-      name.forEach((value, index, array) => {
-        array[index] = value.toLowerCase();
-      });
-
+      name = name.toLowerCase();
       const response = await stockPriceHistory(name, from, to);
 
       const groupedArray = response.reduce((result, element) => {
