@@ -21,7 +21,7 @@ const getFavStocks = (app) => {
       console.error(error);
       return res
         .status(500)
-        .json({ title: "Internal Server Error", message: error.message });
+        .json({ "title": "Internal Server Error", "message": error.message });
     }
   });
 };

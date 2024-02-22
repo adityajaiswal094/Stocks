@@ -3,8 +3,11 @@
  * @returns { Promise<void> }
  */
 exports.up = function (knex) {
-  return knex.schema.alterTable("favourite_stocks", (table) => {
-    table.string("sc_code").unique().notNullable();
+  return knex.schema.createTable("favourite_stocks", (table) => {
+    table.increments("id").primary().notNullable();
+    table
+      .string("sc_code")
+      .notNullable();
   });
 };
 
@@ -13,7 +16,5 @@ exports.up = function (knex) {
  * @returns { Promise<void> }
  */
 exports.down = function (knex) {
-  return knex.schema.alterTable("favourite_stocks", (table) => {
-    table.dropColumn("sc_code");
-  });
+  return knex.schema.dropTable("favourite_stocks");
 };

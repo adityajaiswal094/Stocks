@@ -11,6 +11,7 @@ exports.up = function (knex) {
     table.string("high").notNullable();
     table.string("low").notNullable();
     table.string("close").notNullable();
+    table.date("date").notNullable();
   });
 };
 

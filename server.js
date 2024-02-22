@@ -11,6 +11,9 @@ const getFavStocks = require("./src/apis/getFavStocks");
 const deleteFavourite = require("./src/apis/deleteFavourite");
 const notFound = require("./src/apis/notFound");
 const getStockPriceHistory = require("./src/apis/getStockPriceHistory");
+const userRegistration = require("./src/apis/userRegistration");
+const userLogout = require("./src/apis/userLogout");
+const userLogin = require("./src/apis/userLogin");
 
 const app = express();
 
@@ -21,7 +24,7 @@ const PORT = process.env.PORT;
 
 // test
 app.get("/", (req, res) => {
-  res.status(200).json({ title: "Testing", message: "Application Working" });
+  res.status(200).json({ "title": "Testing", "message": "Application Working" });
 });
 
 // apis
@@ -31,6 +34,9 @@ addFavourite(app);
 getFavStocks(app);
 deleteFavourite(app);
 getStockPriceHistory(app);
+userLogin(app);
+userLogout(app);
+userRegistration(app);
 notFound(app);
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

@@ -9,7 +9,7 @@ const getStockPriceHistory = (app) => {
       if (name.length === 0) {
         return res
           .status(400)
-          .json({ title: "Bad Request", message: "Missing Required Fields" });
+          .json({ "title": "Bad Request", "message": "Missing Required Fields" });
       }
 
       if (from === undefined && to === undefined) {
@@ -20,8 +20,8 @@ const getStockPriceHistory = (app) => {
 
       if (new Date(from).getTime() > new Date(to).getTime()) {
         return res.status(422).json({
-          title: "Unprocessable Entity",
-          message: "'from' should be less than or equal to 'to'",
+          "title": "Unprocessable Entity",
+          "message": "'from' should be less than or equal to 'to'",
         });
       }
 
@@ -54,7 +54,7 @@ const getStockPriceHistory = (app) => {
     } catch (error) {
       return res
         .status(500)
-        .json({ title: "Internal Server Error", message: error.message });
+        .json({ "title": "Internal Server Error", "message": error.message });
     }
   });
 };
