@@ -26,7 +26,7 @@ const validateUser = async (req, res, next) => {
     console.error(error);
     res.status(500).json({
       "title": "Internal Server Error",
-      "message": "Something went wrong!",
+      "message": error.message,
     });
   }
 };

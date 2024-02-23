@@ -26,7 +26,7 @@ const userLogout = (app) => {
       console.error(error);
       return res.status(500).json({
         "title": "Internal Server Error",
-        "message": "Something went wrong!",
+        "message": error.message,
       });
     }
   });
