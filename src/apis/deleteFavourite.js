@@ -1,4 +1,3 @@
-const redisClient = require("../config/redisConfig");
 const deleteFav = require("../db/queries/deleteFav");
 
 const deleteFavourite = (app) => {
@@ -7,8 +6,6 @@ const deleteFavourite = (app) => {
       const sc_code = req.params.sc_code;
 
       const response = await deleteFav(sc_code);
-
-      // await redisClient.del("favourites");
 
       return res.status(200).json(response);
     } catch (error) {

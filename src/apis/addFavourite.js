@@ -1,4 +1,3 @@
-const redisClient = require("../config/redisConfig");
 const addFav = require("../db/queries/addFav");
 
 const addFavourite = (app) => {
@@ -8,8 +7,6 @@ const addFavourite = (app) => {
       const user_id = req.header('user_id');
 
       const result = await addFav(sc_code, user_id);
-
-      // await redisClient.del("favourites");
 
       return res.status(200).json(result);
     } catch (error) {

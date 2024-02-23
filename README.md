@@ -7,7 +7,7 @@ Express.js backend application that retrieves the BSE India Bhav Copy and employ
 ## Setting Up
 
 1. Download and install PostgreSQL (v13.11) and pgAdmin4 (v7.2) in your system.
-2. Download and install Redis.
+2. Download and install Redis. <!-- Not Required! -->
 3. Download and install Git in your system.
 4. Open your psql terminal and create a DB in your postgres engine named **stocks**. Use postgres as your user.
 
