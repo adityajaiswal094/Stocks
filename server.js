@@ -20,7 +20,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 21222;
 
 // test
 app.get("/", (req, res) => {
