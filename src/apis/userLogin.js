@@ -21,7 +21,7 @@ const userLogin = (app) => {
       if (checkUserExist === undefined) {
         return res.status(404).json({
           "title": "User Not Found",
-          "message": "User with the following username does not exist.",
+          "message": "User with the following email does not exist.",
         });
       } else {
         const userLoggedIn = await checkUserLoggedIn(checkUserExist.user_id);
@@ -59,7 +59,7 @@ const userLogin = (app) => {
           } else {
             return res
               .status(401)
-              .json({ "title": "Unauthorized", "message": "Invalid credentials." });
+              .json({ "title": "Invalid Credentials", "message": "Please check your password." });
           }
         }
       }

@@ -10,7 +10,6 @@ const addFav = async (sc_code, user_id) => {
   } catch (error) {
     const pattern = /Key \(stock_id\)=\([^)]*\) is not present in table/;
     const message = error.message;
-    console.log(message);
     throw new Error(
       pattern.test(error.detail)
         ? `Stock with stock_id = ${stock_id} doesn't exist in dataset!`

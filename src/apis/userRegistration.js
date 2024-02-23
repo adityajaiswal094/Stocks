@@ -19,15 +19,15 @@ const userRegistration = (app) => {
       ) {
         return res
           .status(400)
-          .json({ "title": "Bad Request", "message": "Missing required fields." });
+          .json({ "title": "Error", "message": "Missing required fields." });
       }
 
       const checkUserExist = await getUser(email_id);
 
       if (checkUserExist !== undefined) {
         return res.status(400).json({
-          "title": "Bad Request",
-          "message": "User with the following details already exists!",
+          "title": "User Already Exists",
+          "message": "Email already in use!",
         });
       } else {
         const hashedPassword = await hashPassword(password);
@@ -40,7 +40,7 @@ const userRegistration = (app) => {
         };
         const registerUser = await addUser(userDetails);
 
-        return res.status(200).json({"title": "User Registered Successfully", "details": registerUser});
+        return res.status(201).json({"title": "User Registered Successfully", "details": registerUser});
       }
     } catch (error) {
       console.error(error);
